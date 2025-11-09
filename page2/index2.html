@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ATI — Поиск грузов</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>Быстрый поиск грузов</h1>
+        <p class="subtitle">Найдите подходящий груз или транспорт по Казахстану и соседним странам</p>
+      </div>
+    </div>
+
+    <div class="search-card" role="region" aria-label="Поиск грузов">
+      <form id="searchForm" class="search-form">
+        <div class="row">
+          <div class="col">
+            <label>Откуда</label>
+            <select id="qFrom" name="from"></select>
+          </div>
+          <div class="col">
+            <label>Куда</label>
+            <select id="qTo" name="to"></select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label>Кузов</label>
+            <select id="qBody" name="body"></select>
+          </div>
+          <div class="col small">
+            <label>Вес от (т)</label>
+            <input type="number" id="qWmin" name="wmin" placeholder="0" min="0">
+          </div>
+          <div class="col small">
+            <label>Вес до (т)</label>
+            <input type="number" id="qWmax" name="wmax" placeholder="0" min="0">
+          </div>
+          <div class="col small">
+            <label>Дата</label>
+            <input type="date" id="qDate" name="date">
+          </div>
+        </div>
+
+        <div class="row actions">
+          <button type="submit" class="btn btn-primary">Найти грузы</button>
+          <button type="button" class="btn btn-ghost" id="resetBtn">Сбросить</button>
+
+          <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+            <label for="sortSelect" style="font-size:13px;color:var(--muted);margin-right:6px">Сортировать:</label>
+            <select id="sortSelect" style="padding:8px;border-radius:8px;border:1px solid #d7dbe0">
+              <option value="date_desc">Дата (свежие)</option>
+              <option value="date_asc">Дата (старые)</option>
+              <option value="weight_desc">Вес (убыв.)</option>
+              <option value="weight_asc">Вес (возр.)</option>
+              <option value="price_desc">Цена (убыв.)</option>
+              <option value="distance_asc">Расстояние (ближе)</option>
+            </select>
+          </div>
+        </div>
+      </form>
+
+      <aside class="try-box">
+        <h4>Попробуйте бесплатно</h4>
+        <p>Доступ к контактам части грузов, возможность добавить машину и разместить объявления.</p>
+      </aside>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="results-section">
+      <h3 class="results-title">Результаты поиска <span id="resultsCount" style="color:var(--muted);font-weight:600"></span></h3>
+      <div id="results" class="results-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© ATI Cargo — Биржа грузоперевозок</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
